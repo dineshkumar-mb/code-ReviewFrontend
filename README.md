@@ -1,12 +1,63 @@
-# React + Vite
+Code Reviewer Project
+Welcome to the Code Reviewer project! This application utilizes Google Generative AI to enhance code review processes, offering intelligent suggestions and helping developers identify potential improvements.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Automated Code Analysis: Get real-time AI-generated feedback on code quality, style, and best practices.
 
-Currently, two official plugins are available:
+Cutting-Edge AI: Powered by Google Generative AI for accurate and insightful code reviews.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Seamless Integration: Connect easily with your development workflow.
 
-## Expanding the ESLint configuration
+Frontend Hosting: Interactive frontend hosted on Netlify here.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Backend Hosting: Reliable backend services available here.
+
+Getting Started
+Prerequisites
+Node.js (version X.X or later)
+
+npm or yarn
+
+A web browser to access the Netlify-hosted frontend
+
+Installation
+Clone this repository:
+
+bash
+git clone (https://github.com/dineshkumar-mb/code-ReviewFrontend)
+cd code-reviewer
+Install dependencies:
+
+bash
+npm install
+Running the Application
+Start the backend server:
+
+bash
+npm start
+Backend runs on Render at https://code-reviewbackend.onrender.com.
+
+Access the frontend: Visit the Netlify-hosted frontend at https://codereviewer2.netlify.app.
+
+Use the frontend interface to upload your code files or paste snippets, and receive detailed AI-powered reviews.
+
+Contribution
+Contributions are welcome! Please follow these steps:
+
+Fork the repository.
+
+Create a new branch (git checkout -b feature/YourFeature).
+
+Commit your changes (git commit -m 'Add some feature').
+
+Push to the branch (git push origin feature/YourFeature).
+
+Open a pull request.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Acknowledgements
+Built using Google Generative AI.
+
+Hosted with 💙 on Render and Netlify.
