@@ -52,9 +52,8 @@ function App() {
         <div className="right">
           <Markdown
 
-            rehypePlugins={[ rehypeHighlight ]}
-
-          >{review}</Markdown>
+             rehypePlugins={[ rehypeHighlight ]}>
+              {review}</Markdown>
         </div>
       </main>
     </>
