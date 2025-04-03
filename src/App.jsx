@@ -16,7 +16,7 @@ function App() {
 
   async function reviewCode() {
     try {
-      const response = await axios.post("http://localhost:3000/ai/get-review", { code });
+      const response = await axios.post("https://code-reviewbackend.onrender.com/ai/get-review", { code });
       console.log("API Response:", response.data); // Debug API response
       setReview(typeof response.data === "string" ? response.data : JSON.stringify(response.data, null, 2));
     } catch (error) {
