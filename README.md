@@ -11,6 +11,7 @@ Seamless Integration: Connect easily with your development workflow.
 Frontend Hosting: Interactive frontend hosted on Netlify here.
 
 Backend Hosting: Reliable backend services available here.
+![image](https://github.com/user-attachments/assets/fc2f026f-deae-45c6-8313-e9671c790168)
 
 Getting Started
 Prerequisites
