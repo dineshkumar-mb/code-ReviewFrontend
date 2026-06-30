@@ -1,64 +1,64 @@
-Code Reviewer Project
-Welcome to the Code Reviewer project! This application utilizes Google Generative AI to enhance code review processes, offering intelligent suggestions and helping developers identify potential improvements.
+# AI Code Reviewer - Frontend
 
-Features
-Automated Code Analysis: Get real-time AI-generated feedback on code quality, style, and best practices.
+Welcome to the Code Reviewer project! This frontend application is part of an AI-powered code analysis and execution platform that leverages Google's Generative AI (Gemini 2.5 Flash) to provide intelligent code feedback and simulated sandboxed execution.
 
-Cutting-Edge AI: Powered by Google Generative AI for accurate and insightful code reviews.
+## 🚀 What Was Built
 
-Seamless Integration: Connect easily with your development workflow.
+A React-based web interface (built with Vite) that allows developers to paste their code and receive instant, senior-level code reviews. The application provides two core features:
+1. **Automated Code Review:** Evaluates code for quality, best practices, security, and efficiency.
+2. **Code Execution Simulation:** Simulates running the code in a sandboxed compiler environment and returns terminal logs, results, or runtime errors.
 
-Frontend Hosting: Interactive frontend hosted on Netlify here.
+## 💡 Why It's Technically Interesting
 
-Backend Hosting: Reliable backend services available here.
-![image](https://github.com/user-attachments/assets/fc2f026f-deae-45c6-8313-e9671c790168)
+This project goes beyond simple chat completions. It integrates a tightly constrained AI system prompt that acts as both a senior reviewer and a compiler. 
+The frontend consumes a structured JSON response from the backend, enabling a dynamic UI that distinctly renders:
+- ❌ The original problematic code.
+- 🔍 Identified issues.
+- ✅ Recommended fixes.
+- 💡 Improvements.
+- 🖥️ Simulated terminal output (`logs`, `result`, `error`).
 
-Getting Started
-Prerequisites
-Node.js (version X.X or later)
+## 🛠️ Proof It Works: Architecture & AI Integration
 
-npm or yarn
+### Architecture
+- **Frontend:** React + Vite, hosted on [Netlify](https://codereviewer2.netlify.app).
+- **Backend:** Node.js + Express, hosted on [Render](https://code-reviewbackend.onrender.com).
 
-A web browser to access the Netlify-hosted frontend
+### The Prompt Structure
+The system heavily relies on prompt engineering. The prompt requests specific structured categories:
+- **For Reviews:** The AI is instructed to act as a 7+ years experienced reviewer, evaluating Code Quality, Efficiency, Scalability, and Error Detection. It strictly outputs in a structured format containing `Bad Code`, `Issues`, `Recommended Fix`, and `Improvements`.
+- **For Execution:** The AI acts as a sandboxed compiler, instructed to return a **raw JSON object only** without markdown formatting.
 
-Installation
-Clone this repository:
+### Response-Schema Validation & Fallback
+Handling non-deterministic LLM output is a core challenge. When the frontend requests a code execution simulation:
+1. **Sanitization:** The backend intercepts the AI's response and sanitizes any stray Markdown code blocks using regex (e.g., stripping ` ```json `).
+2. **Schema Validation:** The system attempts to parse the raw string into a strict JSON schema containing `logs`, `result`, and `error`.
+3. **Fallback Mechanism:** If the AI hallucinates or fails to produce valid JSON (e.g., `JSON.parse` throws an error), the server gracefully catches the exception. Instead of returning a 500 error or retrying the LLM request, it wraps the raw text output into a safe fallback schema:
+   ```json
+   {
+       "logs": [{ "type": "log", "text": "Raw AI output here" }],
+       "result": null,
+       "error": null
+   }
+   ```
+This ensures the frontend never crashes and always displays a meaningful output to the user.
 
-bash
-git clone (https://github.com/dineshkumar-mb/code-ReviewFrontend)
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (version 16+ recommended)
+- npm or yarn
+
+### Installation
+```bash
+git clone https://github.com/dineshkumar-mb/code-ReviewFrontend
 cd code-reviewer
-Install dependencies:
-
-bash
 npm install
-Running the Application
-Start the backend server:
+npm run dev
+```
 
-bash
-npm start
-Backend runs on Render at https://code-reviewbackend.onrender.com.
+## 🤝 Contribution
+Contributions are welcome! Please fork the repo, create a feature branch, and submit a PR.
 
-Access the frontend: Visit the Netlify-hosted frontend at https://codereviewer2.netlify.app.
-
-Use the frontend interface to upload your code files or paste snippets, and receive detailed AI-powered reviews.
-
-Contribution
-Contributions are welcome! Please follow these steps:
-
-Fork the repository.
-
-Create a new branch (git checkout -b feature/YourFeature).
-
-Commit your changes (git commit -m 'Add some feature').
-
-Push to the branch (git push origin feature/YourFeature).
-
-Open a pull request.
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Acknowledgements
-Built using Google Generative AI.
-
-Hosted with 💙 on Render and Netlify.
+## 📄 License
+This project is licensed under the MIT License.
